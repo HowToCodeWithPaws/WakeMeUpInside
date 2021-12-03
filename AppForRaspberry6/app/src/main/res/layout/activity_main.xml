@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:theme="@style/Theme.FancyWork"
+    >
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/top_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/secondaryColor"
+        android:theme="@style/ToolbarStyleLight"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:theme="@style/ToolbarStyleLight"
+            android:id="@+id/top_bar"
+            app:title="@string/alarms"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:menu="@menu/menu"
+            android:hapticFeedbackEnabled="false" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <View
+        android:id="@+id/showcase_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:foreground="#6A989898"
+        android:visibility="invisible" />
+
+
+    <EditText
+        android:id="@+id/url_input"
+        android:layout_width="200dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="76dp"
+        android:clickable="true"
+        android:cursorVisible="true"
+        android:ellipsize="end"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:hint="@string/url"
+        android:inputType="text"
+        android:text=""
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/url_confirm"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="32dp"
+        android:text="@string/ok"
+        app:layout_constraintStart_toEndOf="@id/url_input"
+        app:layout_constraintTop_toTopOf="@id/url_input" />
+
+    <TextView
+        android:id="@+id/morning_caption"
+        style="android:style/textViewElementsStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="176dp"
+        android:fontFamily="@font/roboto_slab"
+        android:text="@string/morning"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/evening_caption"
+        style="android:style/textViewElementsStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="176dp"
+        android:fontFamily="@font/roboto_slab"
+        android:text="@string/evening"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/morning_caption"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/monday"
+        style="android:style/textViewElementsStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/roboto_slab"
+        android:text="@string/monday"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/morning_caption" />
+
+    <TextView
+        android:id="@+id/tuesday"
+        style="android:style/textViewElementsStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:fontFamily="@font/roboto_slab"
+        android:text="@string/tuesday"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/monday"
+        app:layout_constraintTop_toBottomOf="@id/monday" />
+
+    <TextView
+        android:id="@+id/wednesday"
+        style="android:style/textViewElementsStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:fontFamily="@font/roboto_slab"
+        android:text="@string/wednesday"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/tuesday"
+        app:layout_constraintTop_toBottomOf="@id/tuesday" />
+
+    <TextView
+        android:id="@+id/thursday"
+        style="android:style/textViewElementsStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:fontFamily="@font/roboto_slab"
+        android:text="@string/thursday"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/wednesday"
+        app:layout_constraintTop_toBottomOf="@id/wednesday" />
+
+    <TextView
+        android:id="@+id/friday"
+        style="android:style/textViewElementsStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:fontFamily="@font/roboto_slab"
+        android:text="@string/friday"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/thursday"
+        app:layout_constraintTop_toBottomOf="@id/thursday" />
+
+    <TextView
+        android:id="@+id/saturday"
+        style="android:style/textViewElementsStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:fontFamily="@font/roboto_slab"
+        android:text="@string/saturday"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/friday"
+        app:layout_constraintTop_toBottomOf="@id/friday" />
+
+    <TextView
+        android:id="@+id/sunday"
+        style="android:style/textViewElementsStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:fontFamily="@font/roboto_slab"
+        android:text="@string/sunday"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/saturday"
+        app:layout_constraintTop_toBottomOf="@id/saturday" />
+
+    <Button
+        android:id="@+id/save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="104dp"
+        android:text="@string/save_settings"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.976" />
+
+    <Button
+        android:id="@+id/mMo_button"
+        android:layout_width="70dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="104dp"
+        android:text="@string/morning"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/monday"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/eMo_button"
+        android:layout_width="70dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="208dp"
+        android:text="@string/evening"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.326" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

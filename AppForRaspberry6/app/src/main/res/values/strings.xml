@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">Wake uppppp</string>
+    <string name="settings">Настройки устройств</string>
+    <string name="lamp_settings">Настройки лампы</string>
+    <string name="phone_settings">Настройки телефона</string>
+    <string name="curtains_settings">Настройки штор</string>
+    <string name="share">Share</string>
+    <string name="help">поднять паруса</string>
+    <string name="alarms">Будильники</string>
+    <string name="select_a_color">Выбрать цвет</string>
+    <string name="save_settings">Сохранить настройки</string>
+    <string name="category">Режим</string>
+    <string name="before_alarm1">Включать за</string>
+    <string name="before_alarm2">мин до будильника</string>
+    <string name="repeat">"Повторять каждые "</string>
+    <string name="repeat2">Максимум</string>
+    <string name="repeat3">раз</string>
+    <string name="repeat4">мин</string>
+    <string name="open1">Открывать за</string>
+    <string name="open2">мин до будильника</string>
+    <string name="close1">Закрывать за</string>
+    <string name="close2">мин до будильника</string>
+    <string name="light">Включать лампу при уровне освещенности</string>
+    <string name="zero">0</string>
+    <string name="all">100%</string>
+    <string name="morning">Утро</string>
+    <string name="evening">Вечер</string>
+    <string name="monday">ПН</string>
+    <string name="sunday">ВС</string>
+    <string name="saturday">СБ</string>
+    <string name="tuesday">ВТ</string>
+    <string name="wednesday">СР</string>
+    <string name="thursday">ЧТ</string>
+    <string name="friday">ПТ</string>
+    <string name="url">Введите url сервера</string>
+    <string name="ok">ОК</string>
+</resources>
