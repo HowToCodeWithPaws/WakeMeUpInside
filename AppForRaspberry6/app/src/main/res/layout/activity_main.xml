@@ -209,11 +209,130 @@
         android:id="@+id/eMo_button"
         android:layout_width="70dp"
         android:layout_height="35dp"
-        android:layout_marginStart="208dp"
         android:text="@string/evening"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.326" />
+        app:layout_constraintStart_toStartOf="@id/evening_caption"
+        app:layout_constraintTop_toTopOf="@id/monday"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/mTu_button"
+        android:layout_width="70dp"
+        android:layout_height="35dp"
+        android:text="@string/morning"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/mMo_button"
+        app:layout_constraintTop_toTopOf="@id/tuesday"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/eTu_button"
+        android:layout_width="70dp"
+        android:layout_height="35dp"
+        android:text="@string/evening"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/eMo_button"
+        app:layout_constraintTop_toTopOf="@id/tuesday"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/mWe_button"
+        android:layout_width="70dp"
+        android:layout_height="35dp"
+        android:text="@string/morning"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/mTu_button"
+        app:layout_constraintTop_toTopOf="@id/wednesday"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/eWe_button"
+        android:layout_width="70dp"
+        android:layout_height="35dp"
+        android:text="@string/evening"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/eTu_button"
+        app:layout_constraintTop_toTopOf="@id/wednesday"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/mTh_button"
+        android:layout_width="70dp"
+        android:layout_height="35dp"
+        android:text="@string/morning"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/mWe_button"
+        app:layout_constraintTop_toTopOf="@id/thursday"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/eTh_button"
+        android:layout_width="70dp"
+        android:layout_height="35dp"
+        android:text="@string/evening"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/eWe_button"
+        app:layout_constraintTop_toTopOf="@id/thursday"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/mFr_button"
+        android:layout_width="70dp"
+        android:layout_height="35dp"
+        android:text="@string/morning"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/mTh_button"
+        app:layout_constraintTop_toTopOf="@id/friday"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/eFr_button"
+        android:layout_width="70dp"
+        android:layout_height="35dp"
+        android:text="@string/evening"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/eTh_button"
+        app:layout_constraintTop_toTopOf="@id/friday"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/mSa_button"
+        android:layout_width="70dp"
+        android:layout_height="35dp"
+        android:text="@string/morning"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/mFr_button"
+        app:layout_constraintTop_toTopOf="@id/saturday"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/eSa_button"
+        android:layout_width="70dp"
+        android:layout_height="35dp"
+        android:text="@string/evening"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/eFr_button"
+        app:layout_constraintTop_toTopOf="@id/saturday"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/mSu_button"
+        android:layout_width="70dp"
+        android:layout_height="35dp"
+        android:text="@string/morning"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/mSa_button"
+        app:layout_constraintTop_toTopOf="@id/sunday"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/eSu_button"
+        android:layout_width="70dp"
+        android:layout_height="35dp"
+        android:text="@string/evening"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/eSa_button"
+        app:layout_constraintTop_toTopOf="@id/sunday"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
