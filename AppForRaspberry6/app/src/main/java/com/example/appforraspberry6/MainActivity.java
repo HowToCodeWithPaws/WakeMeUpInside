@@ -73,64 +73,184 @@ public class MainActivity extends AppCompatActivity {
             return true;
         });
 
-        TimePickerDialog.OnTimeSetListener tpmMo = (view, hourOfDay, minute) -> mMo = new Pair(hourOfDay, minute);
-
-        TimePickerDialog.OnTimeSetListener tpmTu = (view, hourOfDay, minute) -> mTu = new Pair(hourOfDay, minute);
-
-        TimePickerDialog.OnTimeSetListener tpmWe = (view, hourOfDay, minute) -> mWe = new Pair(hourOfDay, minute);
-
-        TimePickerDialog.OnTimeSetListener tpmFr = (view, hourOfDay, minute) -> mFr = new Pair(hourOfDay, minute);
-
-        TimePickerDialog.OnTimeSetListener tpmSa = (view, hourOfDay, minute) -> mSa = new Pair(hourOfDay, minute);
-
-        TimePickerDialog.OnTimeSetListener tpmSu = (view, hourOfDay, minute) -> mSu = new Pair(hourOfDay, minute);
-
-        TimePickerDialog.OnTimeSetListener tpeMo = (view, hourOfDay, minute) -> eMo = new Pair(hourOfDay, minute);
-
-        TimePickerDialog.OnTimeSetListener tpeTu = (view, hourOfDay, minute) -> eTu = new Pair(hourOfDay, minute);
-
-        TimePickerDialog.OnTimeSetListener tpeWe = (view, hourOfDay, minute) -> eWe = new Pair(hourOfDay, minute);
-
-        TimePickerDialog.OnTimeSetListener tpeTh = (view, hourOfDay, minute) -> eTh = new Pair(hourOfDay, minute);
-
-        TimePickerDialog.OnTimeSetListener tpeFr = (view, hourOfDay, minute) -> eFr = new Pair(hourOfDay, minute);
-
-        TimePickerDialog.OnTimeSetListener tpeSa = (view, hourOfDay, minute) -> eSa = new Pair(hourOfDay, minute);
-
-        TimePickerDialog.OnTimeSetListener tpeSu = (view, hourOfDay, minute) -> eSu = new Pair(hourOfDay, minute);
-
         Button mMo_button = this.findViewById(R.id.mMo_button);
-        mMo_button.setOnClickListener(  (View v) -> {
-            new TimePickerDialog(MainActivity.this, tpmMo,
-                    Calendar.HOUR_OF_DAY,
-                    Calendar.MINUTE, true)
-                    .show();
-        });
-
         Button eMo_button = this.findViewById(R.id.eMo_button);
-        eMo_button.setOnClickListener(  (View v) -> {
-            new TimePickerDialog(MainActivity.this, tpeMo,
-                    Calendar.HOUR_OF_DAY,
-                    Calendar.MINUTE, true)
-                    .show();
-        });
+        Button mTu_button = this.findViewById(R.id.mTu_button);
+        Button eTu_button = this.findViewById(R.id.eTu_button);
+        Button mWe_button = this.findViewById(R.id.mWe_button);
+        Button eWe_button = this.findViewById(R.id.eWe_button);
+        Button mTh_button = this.findViewById(R.id.mTh_button);
+        Button eTh_button = this.findViewById(R.id.eTh_button);
+        Button mFr_button = this.findViewById(R.id.mFr_button);
+        Button eFr_button = this.findViewById(R.id.eFr_button);
+        Button mSa_button = this.findViewById(R.id.mSa_button);
+        Button eSa_button = this.findViewById(R.id.eSa_button);
+        Button mSu_button = this.findViewById(R.id.mSu_button);
+        Button eSu_button = this.findViewById(R.id.eSu_button);
+
+        TimePickerDialog.OnTimeSetListener tpmMo =
+                (view, hourOfDay, minute) -> {
+                mMo = new Pair(hourOfDay, minute);
+                String formatString = getString(R.string.time_string);
+                String output = String.format(formatString, mMo.first, mMo.second);
+                mMo_button.setText(output );
+        };
+
+        TimePickerDialog.OnTimeSetListener tpmTu = (view, hourOfDay, minute) -> {
+            mTu = new Pair(hourOfDay, minute);
+            String formatString = getString(R.string.time_string);
+            String output = String.format(formatString, mTu.first, mTu.second);
+            mTu_button.setText(output );};
+
+        TimePickerDialog.OnTimeSetListener tpmWe = (view, hourOfDay, minute) -> {
+            mWe = new Pair(hourOfDay, minute);
+            String formatString = getString(R.string.time_string);
+            String output = String.format(formatString, mWe.first, mWe.second);
+            mWe_button.setText(output );};
+
+        TimePickerDialog.OnTimeSetListener tpmTh = (view, hourOfDay, minute) -> {
+            mTh = new Pair(hourOfDay, minute);
+            String formatString = getString(R.string.time_string);
+            String output = String.format(formatString, mTh.first, mTh.second);
+            mTh_button.setText(output );};
+
+        TimePickerDialog.OnTimeSetListener tpmFr = (view, hourOfDay, minute) -> {
+            mFr = new Pair(hourOfDay, minute);
+            String formatString = getString(R.string.time_string);
+            String output = String.format(formatString, mFr.first, mFr.second);
+            mFr_button.setText(output );};
+
+        TimePickerDialog.OnTimeSetListener tpmSa = (view, hourOfDay, minute) -> {
+            mSa = new Pair(hourOfDay, minute);
+            String formatString = getString(R.string.time_string);
+            String output = String.format(formatString, mSa.first, mSa.second);
+            mSa_button.setText(output );};
+
+        TimePickerDialog.OnTimeSetListener tpmSu = (view, hourOfDay, minute) -> {
+            mSu = new Pair(hourOfDay, minute);
+            String formatString = getString(R.string.time_string);
+            String output = String.format(formatString, mSu.first, mSu.second);
+            mSu_button.setText(output );};
+
+        TimePickerDialog.OnTimeSetListener tpeMo = (view, hourOfDay, minute) -> {
+            eMo = new Pair(hourOfDay, minute);
+            String formatString = getString(R.string.time_string);
+            String output = String.format(formatString, eMo.first, eMo.second);
+            eMo_button.setText(output );};
+
+        TimePickerDialog.OnTimeSetListener tpeTu = (view, hourOfDay, minute) -> {
+            eTu = new Pair(hourOfDay, minute);
+            String formatString = getString(R.string.time_string);
+            String output = String.format(formatString, eTu.first, eTu.second);
+            eTu_button.setText(output );};
+
+        TimePickerDialog.OnTimeSetListener tpeWe = (view, hourOfDay, minute) -> {
+            eWe = new Pair(hourOfDay, minute);
+            String formatString = getString(R.string.time_string);
+            String output = String.format(formatString, eWe.first, eWe.second);
+            eWe_button.setText(output );};
+
+        TimePickerDialog.OnTimeSetListener tpeTh = (view, hourOfDay, minute) -> {
+            eTh = new Pair(hourOfDay, minute);
+            String formatString = getString(R.string.time_string);
+            String output = String.format(formatString, eTh.first, eTh.second);
+            eTh_button.setText(output );};
+
+        TimePickerDialog.OnTimeSetListener tpeFr = (view, hourOfDay, minute) -> {
+            eFr = new Pair(hourOfDay, minute);
+            String formatString = getString(R.string.time_string);
+            String output = String.format(formatString, eFr.first, eFr.second);
+            eFr_button.setText(output );};
+
+        TimePickerDialog.OnTimeSetListener tpeSa = (view, hourOfDay, minute) -> {
+            eSa = new Pair(hourOfDay, minute);
+            String formatString = getString(R.string.time_string);
+            String output = String.format(formatString, eSa.first, eSa.second);
+            eSa_button.setText(output );};
+
+        TimePickerDialog.OnTimeSetListener tpeSu = (view, hourOfDay, minute) -> {
+            eSu = new Pair(hourOfDay, minute);
+            String formatString = getString(R.string.time_string);
+            String output = String.format(formatString, eSu.first, eSu.second);
+            eSu_button.setText(output );};
+
+
+        mMo_button.setOnClickListener(  (View v) -> new TimePickerDialog(MainActivity.this, tpmMo,
+                Calendar.HOUR_OF_DAY,
+                Calendar.MINUTE, true)
+                .show());
+
+        eMo_button.setOnClickListener(  (View v) -> new TimePickerDialog(MainActivity.this, tpeMo,
+                Calendar.HOUR_OF_DAY,
+                Calendar.MINUTE, true)
+                .show());
+
+        mTu_button.setOnClickListener(  (View v) -> new TimePickerDialog(MainActivity.this, tpmTu,
+                Calendar.HOUR_OF_DAY,
+                Calendar.MINUTE, true)
+                .show());
+
+        eTu_button.setOnClickListener(  (View v) -> new TimePickerDialog(MainActivity.this, tpeTu,
+                Calendar.HOUR_OF_DAY,
+                Calendar.MINUTE, true)
+                .show());
+
+        mWe_button.setOnClickListener(  (View v) -> new TimePickerDialog(MainActivity.this, tpmWe,
+                Calendar.HOUR_OF_DAY,
+                Calendar.MINUTE, true)
+                .show());
+
+        eWe_button.setOnClickListener(  (View v) -> new TimePickerDialog(MainActivity.this, tpeWe,
+                Calendar.HOUR_OF_DAY,
+                Calendar.MINUTE, true)
+                .show());
+
+        mTh_button.setOnClickListener(  (View v) -> new TimePickerDialog(MainActivity.this, tpmTh,
+                Calendar.HOUR_OF_DAY,
+                Calendar.MINUTE, true)
+                .show());
+
+        eTh_button.setOnClickListener(  (View v) -> new TimePickerDialog(MainActivity.this, tpeTh,
+                Calendar.HOUR_OF_DAY,
+                Calendar.MINUTE, true)
+                .show());
+
+        mFr_button.setOnClickListener(  (View v) -> new TimePickerDialog(MainActivity.this, tpmFr,
+                Calendar.HOUR_OF_DAY,
+                Calendar.MINUTE, true)
+                .show());
+
+        eFr_button.setOnClickListener(  (View v) -> new TimePickerDialog(MainActivity.this, tpeFr,
+                Calendar.HOUR_OF_DAY,
+                Calendar.MINUTE, true)
+                .show());
+
+        mSa_button.setOnClickListener(  (View v) -> new TimePickerDialog(MainActivity.this, tpmSa,
+                Calendar.HOUR_OF_DAY,
+                Calendar.MINUTE, true)
+                .show());
+
+        eSa_button.setOnClickListener(  (View v) -> new TimePickerDialog(MainActivity.this, tpeSa,
+                Calendar.HOUR_OF_DAY,
+                Calendar.MINUTE, true)
+                .show());
+
+        mSu_button.setOnClickListener(  (View v) -> new TimePickerDialog(MainActivity.this, tpmSu,
+                Calendar.HOUR_OF_DAY,
+                Calendar.MINUTE, true)
+                .show());
+
+        eSu_button.setOnClickListener(  (View v) -> new TimePickerDialog(MainActivity.this, tpeSu,
+                Calendar.HOUR_OF_DAY,
+                Calendar.MINUTE, true)
+                .show());
 
         Button save = this.findViewById(R.id.save);
-        save.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                initCall();
-            }
-        });
+        save.setOnClickListener(v -> initCall());
 
         EditText url_input = this.findViewById(R.id.url_input);
         Button url_confirm = this.findViewById(R.id.url_confirm);
-        url_confirm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                baseUrl = url_input.getText().toString();
-            }
-        });
+        url_confirm.setOnClickListener(v -> baseUrl = url_input.getText().toString());
 
                 // Init OkHTTP
         client = new OkHttpClient();
@@ -156,6 +276,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void initCall() {
 
+        if (baseUrl == "") {
+            Toast.makeText(this, "you have to set url", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         Log.d("MainActivity", "url " +baseUrl+" mMo"+mMo.first+":"+mMo.second + "eMo"+eMo.first+":"+eMo.second);
 //                + "- Blue [" + blue + "] - Dir [" + direction + "] - Delay [" + delVal + "]");
 
@@ -174,6 +299,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call call, IOException e) {
                 Log.e("MainActivity", "Error");
+//                Toast.makeText("something went wrong with url connection, try again", Toast.LENGTH_SHORT).show();
                 e.printStackTrace();
             }
 
