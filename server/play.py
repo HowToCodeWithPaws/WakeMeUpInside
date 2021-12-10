@@ -9,6 +9,8 @@ from pathlib import Path
 MP3_PATH = "../mp3s/{}.mp3"
 FFPLAY_ARGS = ['-hide_banner', '-autoexit', '-nodisp']
 FFPLAY = which("ffplay.exe") or which("ffplay")
+os.environ["SDL_AUDIODRIVER"] = "alsa"
+os.environ["AUDIODDEV"] = "hw:1,0"
 
 def play(number: str):
   for char in number:
