@@ -32,7 +32,7 @@ def update_crontab(obj):
       new_crontab_lines.append(f"{minutes} {hours} * * {i} {pwd}/ring.py {time}")
 
   with os.popen("crontab", 'w') as f:
-    f.writelines(new_crontab_lines)
+    f.write('\n'.join(new_crontab_lines) + '\n')
 
 
 def json_dump(obj, filename):
