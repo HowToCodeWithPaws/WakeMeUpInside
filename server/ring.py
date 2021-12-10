@@ -3,8 +3,13 @@
 from time import sleep, time
 import json
 import random
+import os
 import RPi.GPIO as GPIO
 from play import play
+from pathlib import Path
+
+pwd = str(Path(__file__).parent.resolve())
+os.chdir(pwd)
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(5, GPIO.OUT) # колокольчик (реле)

@@ -9,6 +9,7 @@ from subprocess import CalledProcessError, check_output
 from pathlib import Path
 
 pwd = str(Path(__file__).parent.resolve())
+os.chdir(pwd)
 if ' ' in pwd:
   print("cant have spaces in path")
   sys.exit(1)
