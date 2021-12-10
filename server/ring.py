@@ -26,6 +26,7 @@ REPEAT_DELAY = float(config["phone_rt"]) * 60
 
 DELAY = 0.1
 TOTAL_TIME = 60
+NUMBER_REPEAT_DELAY = 10
 
 def input(pin):
   sum = 0
@@ -45,6 +46,8 @@ def count_pulses():
       i += 1
     prev = next
     sleep(0.01)
+    if time() - lastCallback > NUMBER_REPEAT_DELAY:
+      return 0
   return i
 
 def game():
@@ -62,6 +65,10 @@ def ring():
     sleep(DELAY)
     if input(13) == 0:
       game()
+      GPIO.output(5, 0)
+      sleep(DELAY)
+      GPIO.output(5, 1)
+      sleep(DELAY)
       return True
   return False
 
