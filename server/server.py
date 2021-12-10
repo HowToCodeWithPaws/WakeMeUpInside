@@ -19,7 +19,7 @@ weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'S
 def update_crontab(obj):
   try:
     old_crontab = check_output(["crontab", "-l"]).decode('utf8')
-    new_crontab_lines = [e for e in old_crontab.split('\n') if 'start_server.sh' not in e and 'ring.py' not in e]
+    new_crontab_lines = [e for e in old_crontab.split('\n') if 'start_server.sh' not in e and 'ring.py' not in e and e.strip() != '']
   except CalledProcessError:
     new_crontab_lines = []
   new_crontab_lines.append(f"59 * * * * {pwd}/start_server.sh")
