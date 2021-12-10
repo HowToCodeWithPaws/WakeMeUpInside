@@ -20,7 +20,7 @@
     <string name="open2">мин до будильника</string>
     <string name="close1">Закрывать за</string>
     <string name="close2">мин до будильника</string>
-    <string name="light">Включать лампу при уровне освещенности</string>
+    <string name="light">Включать лампу при уровне освещенности менее</string>
     <string name="zero">0</string>
     <string name="all">100%</string>
     <string name="morning">Утро</string>

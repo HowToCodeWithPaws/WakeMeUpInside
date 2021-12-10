@@ -61,6 +61,8 @@ public class LampActivity extends AppCompatActivity implements AdapterView.OnIte
         modes.add("усиление цвета");
         modes.add("цвет по часовой стрелке");
         modes.add("цвет против часовой стрелки");
+        modes.add("волны");
+        modes.add("мигание");
         modes.add("радуга");
 
         Spinner spinnerMode = findViewById(R.id.mode_spinner);
@@ -324,16 +326,22 @@ public class LampActivity extends AppCompatActivity implements AdapterView.OnIte
 
     public void selectLampMode(int position){
         if (position == 0) {
-            func = -1;
+            func = 0;
             Log.d("Режим","Выбрали дефолт");
         } else if (position == 1) {
-            func = 0;
+            func = 1;
             Log.d("Режим","Выбрали по часовой");
         } else if (position == 2) {
-            func = 1;
+            func = 2;
             Log.d("Режим","Выбрали против часовой");
         } else if (position == 3) {
-            func = 2;
+            func = 3;
+            Log.d("Режим","Выбрали волны");
+        }else if (position == 4) {
+            func = 4;
+            Log.d("Режим","Выбрали мигание");
+        }else if (position == 5) {
+            func = 5;
             Log.d("Режим","Выбрали радугу");
         }
     }
