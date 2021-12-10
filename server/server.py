@@ -31,9 +31,18 @@ def update_crontab(obj):
   with os.popen("crontab", 'w') as f:
     f.writelines(new_crontab_lines)
 
+
+def json_dump(obj, filename):
+  with open(filename, 'w') as f:
+    json.dump(obj, f)
+
+def json_load(filename):
+  with open(filename, 'r') as f:
+    return json.load(f)
+
 def write_config(o):
-  obj = {**json.load("config.json"), **o}
-  json.dump(obj, "config.json")
+  obj = {**json_load("config.json"), **o}
+  json_dump(obj, "config.json")
   update_crontab(obj)
 
 class S(BaseHTTPRequestHandler):

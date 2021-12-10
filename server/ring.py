@@ -11,7 +11,11 @@ GPIO.setup(5, GPIO.OUT) # колокольчик (реле)
 GPIO.setup(13, GPIO.IN, pull_up_down=GPIO.PUD_UP) # трубка
 GPIO.setup(6, GPIO.IN, pull_up_down=GPIO.PUD_UP) # циферблат
 
-config = json.load("config.json")
+def json_load(filename):
+  with open(filename, 'r') as f:
+    return json.load(f)
+
+config = json_load("config.json")
 REPEAT_TIMES = int(config["phone_rm"]) + 1
 REPEAT_DELAY = float(config["phone_rt"]) * 60
 
