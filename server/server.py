@@ -8,7 +8,7 @@ import os
 from subprocess import check_output
 from pathlib import Path
 
-pwd = Path(__file__).parent.resolve()
+pwd = str(Path(__file__).parent.resolve())
 if ' ' in pwd:
   print("cant have spaces in path")
   sys.exit(1)
@@ -26,7 +26,7 @@ def update_crontab(obj):
       minutes = int(obj[day + time + 'MM'])
       if hours == -1 or minutes == -1:
         continue
-      new_crontab_lines.append(f"{minutes} {hours} * * {i} sudo {pwd}/ring.py {time}")
+      new_crontab_lines.append(f"{minutes} {hours} * * {i} {pwd}/ring.py {time}")
 
   with os.popen("crontab", 'w') as f:
     f.writelines(new_crontab_lines)

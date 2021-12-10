@@ -1,5 +1,12 @@
 #!/bin/sh
 
+[ -f config.json ] || echo '{
+  "phone_rm": "0",
+  "phone_rt": "5",
+}' > config.json
+
+sudo usermod -a -G gpio "$LOGNAME"
+
 sudo apt update
 sudo apt install ffmpeg python3 mpg321
 

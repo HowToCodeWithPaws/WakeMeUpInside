@@ -1,5 +1,5 @@
 #!/bin/sh
 
 while true; do
-  ./play.py $(sudo ./numeric_echo.py)
+  ./play.py $(./numeric_echo.py)
 done
