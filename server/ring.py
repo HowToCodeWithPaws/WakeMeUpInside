@@ -44,6 +44,7 @@ def count_pulses():
 
 def game():
   num = random.randint(1, 9)
+  sleep(1.5)
   for _ in range(10):
     play(str(num))
     res = count_pulses()

@@ -5,7 +5,7 @@ from http.server import HTTPServer, BaseHTTPRequestHandler
 import json
 import sys
 import os
-from subprocess import check_output
+from subprocess import CalledProcessError, check_output
 from pathlib import Path
 
 pwd = str(Path(__file__).parent.resolve())
@@ -16,8 +16,11 @@ if ' ' in pwd:
 weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 
 def update_crontab(obj):
-  old_crontab = check_output(["crontab", "-l"]).decode('utf8')
-  new_crontab_lines = [e for e in old_crontab.split('\n') if 'start_server.sh' not in e and 'ring.py' not in e]
+  try:
+    old_crontab = check_output(["crontab", "-l"]).decode('utf8')
+    new_crontab_lines = [e for e in old_crontab.split('\n') if 'start_server.sh' not in e and 'ring.py' not in e]
+  except CalledProcessError:
+    new_crontab_lines = []
   new_crontab_lines.append(f"59 * * * * {pwd}/start_server.sh")
 
   for i, day in enumerate(weekdays):
