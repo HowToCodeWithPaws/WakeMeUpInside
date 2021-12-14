@@ -19,10 +19,19 @@ weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'S
 def update_crontab(obj):
   try:
     old_crontab = check_output(["crontab", "-l"]).decode('utf8')
-    new_crontab_lines = [e for e in old_crontab.split('\n') if 'start_server.sh' not in e and 'ring.py' not in e and e.strip() != '']
+    new_crontab_lines = [e for e in old_crontab.split('\n') if pwd not in e and e.strip() != '']
   except CalledProcessError:
     new_crontab_lines = []
   new_crontab_lines.append(f"59 * * * * {pwd}/start_server.sh")
+
+  def add_extra_line(name, file):
+    if obj[name] == '1':
+      t1 = t - int(obj[name + "t"])
+      if t1 < 0:
+        t1 = 0
+      m = t1 % 60
+      h = t1 // 60
+      new_crontab_lines.append(f"{m} {h} * * {i} {pwd}/{file} {time}")
 
   for i, day in enumerate(weekdays):
     for time in ['Morning', 'Evening']:
@@ -30,7 +39,15 @@ def update_crontab(obj):
       minutes = int(obj[day + time + 'MM'])
       if hours == -1 or minutes == -1:
         continue
+      t = hours*60 + minutes
+
       new_crontab_lines.append(f"{minutes} {hours} * * {i} {pwd}/ring.py {time}")
+
+      if time == 'Morning':
+        add_extra_line("lamp_ba", "lamp.py")
+        add_extra_line("curtains_o", "curtains.py")
+      if time == 'Evening':
+        add_extra_line("curtains_c", "curtains.py")
 
   with os.popen("crontab", 'w') as f:
     f.write('\n'.join(new_crontab_lines) + '\n')

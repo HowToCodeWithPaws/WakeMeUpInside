@@ -2,7 +2,10 @@
 
 [ -f config.json ] || echo '{
   "phone_rm": "0",
-  "phone_rt": "5"
+  "phone_rt": "5",
+  "lamp_ba": "1", "lamp_bat": "0",
+  "curtains_o": "1", "curtains_ot": "0",
+  "curtains_c": "1", "curtains_ct": "0"
 }' > config.json
 
 sudo usermod -a -G gpio "$LOGNAME"
