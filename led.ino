@@ -4,6 +4,7 @@
 #define LED_NUMBER 16 //number of LEDs in the LED strip; can be 8!
 #define FORWARD 1
 #define REVERSE 2
+#define LIGHT_RES_PIN A0
 
 struct data {
    String color;
@@ -15,11 +16,15 @@ struct data {
    int b;
 };
 
+char ssid[] = "";
+char pass[] = "";
+
  Adafruit_NeoPixel strip = Adafruit_NeoPixel(LED_NUMBER, PIN, NEO_RGB+NEO_KHZ800);
  
 //check for more settings at github.com/adafruit/Adafruit_NeoPixel
 void setup() {
    // put your setup code here, to run once:
+   pinMode(LIGHT_RES_PIN, INPUT);
    Serial.begin(115200);
    Serial.println("Arduino Strip RGB Led");
    strip.begin();
@@ -27,7 +32,9 @@ void setup() {
 
 void loop() {
    // put your main code here, to run repeatedly:
-   clearStrip(100, REVERSE);
+   
+   //Serial.println(analogRead(LIGHT_RES_PIN));
+   //clearStrip(100, REVERSE);
    //rainbow(100, FORWARD);
    //clearStrip(100, REVERSE);
    //fillStrip(strip.Color(255,0,0), 100, FORWARD); // color = GRB!
@@ -36,7 +43,8 @@ void loop() {
    //blinkNTimes(strip.Color(50, 50, 50), 100, 5);
    //transfusion(20);
    //mildBlinkNTimes(strip.Color(0, 0, 255), 20, 5);
-   mildFillStrip(strip.Color(0, 0, 255), 2, 10, FORWARD);
+   //mildFillStrip(strip.Color(255, 0, 0), 2, 10, FORWARD);
+   //intensityUprise(strip.Color(0, 255, 0), 50);
    //delay(1000);
 }
 
@@ -99,6 +107,15 @@ void mildBlinkNTimes(uint32_t color, int wait, int N) {
   }
 }
 
+void intensityUprise(uint32_t color, int wait) {
+  uint8_t r = (uint8_t)(color >> 16), g = (uint8_t)(color >> 8), b = (uint8_t)color;
+  for (int j = 0; j < 256; ++j) {
+    strip.fill(strip.Color(((float)r) * j / 255, ((float)g) * j / 255, ((float)b) * j / 255));
+    strip.show();
+    delay(wait);
+  }
+}
+
 void mildFillStrip(uint32_t color, int wait, int leds_num, int direction) {
   uint8_t r = (uint8_t)(color >> 16), g = (uint8_t)(color >> 8), b = (uint8_t)color;
   int first, last;
@@ -149,7 +166,7 @@ void clearStrip(int wait, int direction) {
    }
 }
 
-void setDirection(int *first, int *last,int direction) {
+void setDirection(int *first, int *last, int direction) {
    if (direction == FORWARD) {
      *first = 0;
      *last = LED_NUMBER;
