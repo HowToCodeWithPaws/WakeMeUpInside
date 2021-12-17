@@ -3,6 +3,11 @@
 import json
 from sys import argv
 from subprocess import run
+from pathlib import Path
+import os
+
+pwd = str(Path(__file__).parent.resolve())
+os.chdir(pwd)
 
 def json_load(filename):
   with open(filename, 'r') as f:

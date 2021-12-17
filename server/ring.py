@@ -25,7 +25,7 @@ REPEAT_TIMES = int(config["phone_rm"]) + 1
 REPEAT_DELAY = float(config["phone_rt"]) * 60
 
 DELAY = 0.1
-TOTAL_TIME = 60
+TOTAL_TIME = 20
 NUMBER_REPEAT_DELAY = 10
 
 def input(pin):
