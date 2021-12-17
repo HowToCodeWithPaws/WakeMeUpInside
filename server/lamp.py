@@ -23,7 +23,7 @@ number = 5
 red = int(config["red"])
 green = int(config["green"])
 blue = int(config["blue"])
-color = f"{red:02x}{green:02x}{blue:02x}"
+color = f"{green:02x}{red:02x}{blue:02x}"
 
 res = json.loads(check_output(["curl", f"http://{LAMP_IP}/analog/0"]))
 light = int(res["return_value"])

@@ -222,8 +222,7 @@ int setStripColor(String command) {
       intensityUprise(color, delay);
       break;
     case 1:
-    case 2:
-      mildFillStrip(color, delay, num, direction);
+      mildFillStrip(color, delay/10, LED_NUMBER, FORWARD);
       break;
     case 3:
       transfusion(delay);
@@ -231,6 +230,7 @@ int setStripColor(String command) {
     case 4:
       mildBlinkNTimes(color, delay, num);
       break;
+    case 2:
     case 5:
       rainbow(delay, direction);
       break;

@@ -62,6 +62,11 @@ def json_load(filename):
     return json.load(f)
 
 def write_config(o):
+  if o.get("LAMP_IP") == "":
+    del o["LAMP_IP"]
+  if o.get("MOTOR_IP") == "":
+    del o["MOTOR_IP"]
+
   obj = {**json_load("config.json"), **o}
   json_dump(obj, "config.json")
   update_crontab(obj)
