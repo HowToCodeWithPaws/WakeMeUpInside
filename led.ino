@@ -228,7 +228,8 @@ int setStripColor(String command) {
       transfusion(delay);
       break;
     case 4:
-      mildBlinkNTimes(color, delay, num);
+      // mildBlinkNTimes(color, delay, num);
+      blinkNTimes(color, delay*5, num*10);
       break;
     case 2:
     case 5:

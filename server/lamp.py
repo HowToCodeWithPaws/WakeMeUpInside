@@ -15,7 +15,7 @@ def json_load(filename):
 config = json_load("config.json")
 LAMP_IP = config.get("LAMP_IP") or "192.168.43.152"
 
-threshold = int(config["lightlevel"]) * 7 + 100
+threshold = (100 - int(config["lightlevel"])) * 7 + 100
 mode = int(config["mode"][0])
 direction = 'l' if mode == 2 else 'r'
 delay = 5
