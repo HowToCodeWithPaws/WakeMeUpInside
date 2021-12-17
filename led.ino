@@ -214,8 +214,9 @@ int setStripColor(String command) {
   uint8_t num = command[3] - '0';
   uint32_t color = strtol(&command[4], NULL, 16);
 
-  int delay = delayx100 * 100;
+  int delay = delayx100 * 10;
 
+  Serial.println("Doing lamp stuff....");
   switch(mode) {
     case 0:
       intensityUprise(color, delay);
@@ -234,6 +235,8 @@ int setStripColor(String command) {
       rainbow(delay, direction);
       break;
   }
+  Serial.println("Done!");
+  clearStrip(0, FORWARD);
 
   return 1;
 }

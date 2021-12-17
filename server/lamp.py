@@ -8,9 +8,9 @@ def json_load(filename):
     return json.load(f)
 
 config = json_load("config.json")
-LAMP_IP = config.get("LAMP_IP") or "192.168.1.67"
+LAMP_IP = config.get("LAMP_IP") or "192.168.43.152"
 
-threshold = int(config["lightlevel"]) * 700 + 100
+threshold = int(config["lightlevel"]) * 7 + 100
 mode = int(config["mode"][0])
 direction = 'l' if mode == 2 else 'r'
 delay = 5
@@ -22,5 +22,6 @@ color = f"{red:02x}{green:02x}{blue:02x}"
 
 res = json.loads(check_output(["curl", f"http://{LAMP_IP}/analog/0"]))
 light = int(res["return_value"])
+print(light, ">", threshold)
 if light > threshold:
   run(["curl", f"http://{LAMP_IP}/fill?params={mode}{direction}{delay}{number}{color}"])
