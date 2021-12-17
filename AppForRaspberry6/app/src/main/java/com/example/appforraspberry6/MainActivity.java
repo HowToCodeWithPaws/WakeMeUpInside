@@ -54,7 +54,9 @@ public class MainActivity extends AppCompatActivity {
     private Pair<Integer, Integer> eSu= new Pair(-1, -1);
 
     private OkHttpClient client;
-    private static String baseUrl = ""; //change it to the Raspberry Pi3 IP
+    private static String baseUrl = "";
+    private static String lampIp = "";
+    private static String motorIp = "";
 
 
     @Override
@@ -67,7 +69,14 @@ public class MainActivity extends AppCompatActivity {
             if(item.getItemId() == R.id.lamp){
                 if (baseUrl == "") {
                     Toast.makeText(this, "you have to set url", Toast.LENGTH_SHORT).show();
-                }else{
+                }//else if(lampIp == ""){
+                   // Toast.makeText(this, "you have to set lamp ip", Toast.LENGTH_SHORT).show();
+
+             //   }else if(motorIp==""){
+               //     Toast.makeText(this, "you have to set motor ip", Toast.LENGTH_SHORT).show();
+
+            //    }
+            else{
                     LampActivity.baseUrl = baseUrl;
                     Intent intent = new Intent(this, LampActivity.class);
                     startActivity(intent);
@@ -257,6 +266,14 @@ public class MainActivity extends AppCompatActivity {
         Button url_confirm = this.findViewById(R.id.url_confirm);
         url_confirm.setOnClickListener(v -> baseUrl = url_input.getText().toString());
 
+        EditText lamp_ip_input = this.findViewById(R.id.lamp_ip_input);
+        Button lamp_ip_confirm = this.findViewById(R.id.lamp_ip_confirm);
+        lamp_ip_confirm.setOnClickListener(v -> lampIp = lamp_ip_input.getText().toString());
+
+        EditText motor_ip_input = this.findViewById(R.id.motor_ip_input);
+        Button motor_ip_confirm = this.findViewById(R.id.motor_ip_confirm);
+        motor_ip_confirm.setOnClickListener(v -> motorIp = motor_ip_input.getText().toString());
+
 // Init OkHTTP
         client = new OkHttpClient();
     }
@@ -290,6 +307,8 @@ public class MainActivity extends AppCompatActivity {
 // + "- Blue [" + blue + "] - Dir [" + direction + "] - Delay [" + delVal + "]");
 
         HttpUrl.Builder urlBuilder = HttpUrl.parse(baseUrl).newBuilder()
+                .addQueryParameter("LAMP_IP", lampIp)
+                .addQueryParameter("MOTOR_IP", motorIp)
                 .addQueryParameter("MondayMorningHH", String.valueOf(mMo.first))
                 .addQueryParameter("MondayMorningMM", String.valueOf(mMo.second))
                 .addQueryParameter("MondayEveningHH", String.valueOf(eMo.first))

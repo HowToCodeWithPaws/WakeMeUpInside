@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,6 +7,10 @@
     tools:context=".MainActivity"
     android:theme="@style/Theme.FancyWork"
     >
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/top_bar_layout"
@@ -63,19 +67,73 @@
         app:layout_constraintStart_toEndOf="@id/url_input"
         app:layout_constraintTop_toTopOf="@id/url_input" />
 
+    <EditText
+        android:id="@+id/lamp_ip_input"
+        android:layout_width="200dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:clickable="true"
+        android:cursorVisible="true"
+        android:ellipsize="end"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:hint="@string/lamp_ip"
+        android:inputType="text"
+        android:text=""
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/url_input" />
+
+    <Button
+        android:id="@+id/lamp_ip_confirm"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="32dp"
+        android:text="@string/ok"
+        app:layout_constraintStart_toEndOf="@id/lamp_ip_input"
+        app:layout_constraintTop_toTopOf="@id/lamp_ip_input" />
+
+    <EditText
+        android:id="@+id/motor_ip_input"
+        android:layout_width="200dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:clickable="true"
+        android:cursorVisible="true"
+        android:ellipsize="end"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:hint="@string/motor_ip"
+        android:inputType="text"
+        android:text=""
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/lamp_ip_input" />
+
+    <Button
+        android:id="@+id/motor_ip_confirm"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="32dp"
+        android:text="@string/ok"
+        app:layout_constraintStart_toEndOf="@id/motor_ip_input"
+        app:layout_constraintTop_toTopOf="@id/motor_ip_input" />
+
     <TextView
         android:id="@+id/morning_caption"
         style="android:style/textViewElementsStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="120dp"
-        android:layout_marginTop="176dp"
+        android:layout_marginTop="26dp"
         android:fontFamily="@font/roboto_slab"
         android:text="@string/morning"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/motor_ip_input" />
 
     <TextView
         android:id="@+id/evening_caption"
@@ -83,7 +141,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="52dp"
-        android:layout_marginTop="176dp"
+        android:layout_marginTop="260dp"
         android:fontFamily="@font/roboto_slab"
         android:text="@string/evening"
         android:textSize="18sp"
@@ -188,10 +246,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="104dp"
+        android:layout_marginTop="26dp"
         android:text="@string/save_settings"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sunday"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintVertical_bias="0.976" />
 
     <Button
@@ -336,3 +395,4 @@
         app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

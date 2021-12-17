@@ -35,4 +35,6 @@
     <string name="url">Введите url сервера</string>
     <string name="ok">ОК</string>
     <string name="time_string">%d:%d</string>
+    <string name="lamp_ip">Введите ip лампы</string>
+    <string name="motor_ip">Введите ip мотора штор</string>
 </resources>

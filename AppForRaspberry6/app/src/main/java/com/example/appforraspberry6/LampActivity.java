@@ -60,10 +60,9 @@ public class LampActivity extends AppCompatActivity implements AdapterView.OnIte
         ArrayList<String> modes = new ArrayList<String>();
         modes.add("усиление цвета");
         modes.add("цвет по часовой стрелке");
-        modes.add("цвет против часовой стрелки");
-        modes.add("волны");
+        modes.add("разноцветное");
+        modes.add("градиент");
         modes.add("мигание");
-        modes.add("радуга");
 
         Spinner spinnerMode = findViewById(R.id.mode_spinner);
         ArrayAdapter adapterMode=
@@ -81,6 +80,16 @@ public class LampActivity extends AppCompatActivity implements AdapterView.OnIte
         before_alarm_modes.add("25");
         before_alarm_modes.add("30");
 
+        ArrayList<String> repeat_phone_modes = new ArrayList<String>();
+        repeat_phone_modes.add("0");
+        repeat_phone_modes.add("1");
+        repeat_phone_modes.add("5");
+        repeat_phone_modes.add("10");
+        repeat_phone_modes.add("15");
+        repeat_phone_modes.add("20");
+        repeat_phone_modes.add("25");
+        repeat_phone_modes.add("30");
+
 
         CheckBox BAlampCheckbox = findViewById(R.id.before_alarm_lamp_checkbox);
         CheckBox curtainsOpenCheckbox = findViewById(R.id.curtains_open_check);
@@ -93,8 +102,12 @@ public class LampActivity extends AppCompatActivity implements AdapterView.OnIte
         BAlampSpinner.setAdapter(adapterBA);
         BAlampSpinner.setOnItemSelectedListener(this);
 
+
+        ArrayAdapter adapterRPhone =
+                new ArrayAdapter(this, android.R.layout.simple_spinner_item, repeat_phone_modes);
+        adapterBA.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         Spinner RPhoneSpinner = findViewById(R.id.phone_repeat_spinner_time);
-        RPhoneSpinner.setAdapter(adapterBA);
+        RPhoneSpinner.setAdapter(adapterRPhone);
         RPhoneSpinner.setOnItemSelectedListener(this);
 
         ArrayList<String> max_alarm = new ArrayList<String>();
@@ -134,7 +147,8 @@ public class LampActivity extends AppCompatActivity implements AdapterView.OnIte
         });
 
         red = green = blue = func = -1;
-        ba_lamp_time = ba_lamp = curtains_close_t = curtains_open_t = curtains_close = curtains_open = lightlevel=0;
+        ba_lamp_time = ba_lamp = curtains_close_t = curtains_open_t = curtains_close = curtains_open = 0;
+        lightlevel=100;
 
         Spinner curtainsClose = findViewById(R.id.curtains_close_spinner);
         curtainsClose.setAdapter(adapterBA);
@@ -170,6 +184,7 @@ public class LampActivity extends AppCompatActivity implements AdapterView.OnIte
                                 green = Color.green(color);
                                 blue = Color.blue(color);
 
+                                buttonSelectColor.setBackgroundColor(color);
                             }
                         })
                         .create()
@@ -333,16 +348,13 @@ public class LampActivity extends AppCompatActivity implements AdapterView.OnIte
             Log.d("Режим","Выбрали по часовой");
         } else if (position == 2) {
             func = 2;
-            Log.d("Режим","Выбрали против часовой");
+            Log.d("Режим","Выбрали разноцветное");
         } else if (position == 3) {
             func = 3;
-            Log.d("Режим","Выбрали волны");
+            Log.d("Режим","Выбрали градиент");
         }else if (position == 4) {
             func = 4;
             Log.d("Режим","Выбрали мигание");
-        }else if (position == 5) {
-            func = 5;
-            Log.d("Режим","Выбрали радугу");
         }
     }
 
@@ -425,24 +437,27 @@ public class LampActivity extends AppCompatActivity implements AdapterView.OnIte
         r_phone_time = 0;
         Log.d("Телефон","Выбрали 0");
     } else if (position == 1) {
+        r_phone_time = 1;
+        Log.d("Телефон","Выбрали 1");
+    } else if (position == 2) {
         r_phone_time = 5;
         Log.d("Телефон","Выбрали 5");
-    } else if (position == 2) {
+    } else if (position == 3) {
         r_phone_time = 10;
         Log.d("Телефон","Выбрали 10");
-    } else if (position == 3) {
+    }else if (position == 4) {
         r_phone_time = 15;
         Log.d("Телефон","Выбрали 15");
-    }else if (position == 4) {
+    }else if (position == 5) {
         r_phone_time = 20;
         Log.d("Телефон","Выбрали 20");
-    }else if (position == 5) {
+    }else if (position == 6) {
         r_phone_time = 25;
         Log.d("Телефон","Выбрали 25");
-    }else if (position == 6) {
-        r_phone_time = 30;
-        Log.d("Телефон","Выбрали 30");
-    }}
+    }else if (position == 7) {
+            r_phone_time = 30;
+            Log.d("Телефон","Выбрали 30");
+        }}
     public void selectPhoneMax(int position){
         if (position == 0) {
             r_phone_max = 0;
@@ -467,17 +482,17 @@ public class LampActivity extends AppCompatActivity implements AdapterView.OnIte
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        if((Integer)parent.getId() ==  2131230992){
+        if((Integer)parent.getId() ==  R.id.mode_spinner){
             selectLampMode(position);
-        }else if((Integer)parent.getId() == 2131230809){
+        }else if((Integer)parent.getId() == R.id.before_alarm_lamp_spinner){
            selectLampTime(position);
-        }else if((Integer)parent.getId() == 2131296600){
+        }else if((Integer)parent.getId() == R.id.phone_repeat_spinner_time){
             selectPhoneTime(position);
-        }else if((Integer)parent.getId() == 2131296599){
+        }else if((Integer)parent.getId() == R.id.phone_repeat_spinner_max){
             selectPhoneMax(position);
-        }else if((Integer)parent.getId() == 2131296405){
+        }else if((Integer)parent.getId() == R.id.curtains_open_spinner){
             selectCurtainsOpen(position);
-        }else if((Integer)parent.getId() == 2131296401){
+        }else if((Integer)parent.getId() == R.id.curtains_close_spinner){
             selectCurtainsClose(position);
         }
     }
