@@ -3,8 +3,13 @@
 from time import sleep, time
 import json
 import random
+import os
 import RPi.GPIO as GPIO
 from play import play
+from pathlib import Path
+
+pwd = str(Path(__file__).parent.resolve())
+os.chdir(pwd)
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(5, GPIO.OUT) # колокольчик (реле)
@@ -20,7 +25,8 @@ REPEAT_TIMES = int(config["phone_rm"]) + 1
 REPEAT_DELAY = float(config["phone_rt"]) * 60
 
 DELAY = 0.1
-TOTAL_TIME = 60
+TOTAL_TIME = 20
+NUMBER_REPEAT_DELAY = 10
 
 def input(pin):
   sum = 0
@@ -40,6 +46,8 @@ def count_pulses():
       i += 1
     prev = next
     sleep(0.01)
+    if time() - lastCallback > NUMBER_REPEAT_DELAY:
+      return 0
   return i
 
 def game():
@@ -57,6 +65,10 @@ def ring():
     sleep(DELAY)
     if input(13) == 0:
       game()
+      GPIO.output(5, 0)
+      sleep(DELAY)
+      GPIO.output(5, 1)
+      sleep(DELAY)
       return True
   return False
 

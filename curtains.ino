@@ -1,13 +1,44 @@
+#include <WiFiEsp.h>
+
+#include "aREST.h"
+
+// Emulate Serial1 on pins 6/7 if not present
+#ifndef HAVE_HWSERIAL1
+#include "SoftwareSerial.h"
+SoftwareSerial Serial1(6, 7);  // RX, TX
+#endif
+
 // порты для подключения модуля ULN2003 к Arduino
 #define in1 8
 #define in2 9
 #define in3 10
 #define in4 11
 
-int dl = 2; // время задержки между импульсами
-int iters = 6250;
+char* ssid = "diplo";         // your network SSID (name)
+char* pass = "otdimasika";    // your network password
+int status = WL_IDLE_STATUS;  // the Wifi radio's status
+
+WiFiEspServer server(80);
+aREST rest = aREST();
+
+int dl = 3; // время задержки между импульсами
+int iters = 10001;
 char direction = 0;
 char incomingByte = 0;
+
+void handle(WiFiEspClient& client) {
+  if(client.available()) {
+    // Handle request
+    rest.handle_proto(client, true, 0, true);
+
+    // Answer
+    rest.sendBuffer(client, 0, 0);
+    client.stop();
+
+    // Reset variables for the next command
+    rest.reset_status();
+  }
+}
 
 void setup() {
     Serial.begin(9600);
@@ -17,23 +48,29 @@ void setup() {
     pinMode(in3, OUTPUT);
     pinMode(in4, OUTPUT);
     
+    Serial.println("Arduino Strip RGB Led");
   
+    Serial1.begin(9600);
+    WiFi.init(&Serial1);
+    WiFi.begin(ssid, pass);
+    while(WiFi.status() != WL_CONNECTED) {
+      delay(500);
+      Serial.print(".");
+    }
+  
+    Serial.println("You're connected to the network");
+    Serial.println(WiFi.localIP());
+    server.begin();
+    
+    rest.function("forward", forward);
+    rest.function("reverse", reverse);
     
     }
    
    void loop(){
-      if (Serial.available() > 0) {
-        incomingByte = Serial.read();
-        if (incomingByte == '0' || incomingByte == '1') {
-          direction = incomingByte;
-          digitalWrite(in1, LOW); 
-          digitalWrite(in2, LOW); 
-          digitalWrite(in3, LOW); 
-          digitalWrite(in4, LOW);
-          iters = 0;
-        }
-      }
-      if (iters < 6250) {
+    WiFiEspClient client = server.available();
+    handle(client);
+      if (iters < 10000) {
         if (direction == '0') {
           digitalWrite(in1, HIGH); 
           digitalWrite(in2, LOW); 
@@ -87,6 +124,24 @@ void setup() {
         }
         ++iters;
       }
+   }
+
+   void forward() {
+      direction = '1';
+      digitalWrite(in1, LOW); 
+      digitalWrite(in2, LOW); 
+      digitalWrite(in3, LOW); 
+      digitalWrite(in4, LOW);
+      iters = 0;
+   }
+
+   void reverse() {
+      direction = '0';
+      digitalWrite(in1, LOW); 
+      digitalWrite(in2, LOW); 
+      digitalWrite(in3, LOW); 
+      digitalWrite(in4, LOW);
+      iters = 0;
    }
 
 //
