@@ -22,7 +22,7 @@ WiFiEspServer server(80);
 aREST rest = aREST();
 
 int dl = 3; // время задержки между импульсами
-int iters = 6250;
+int iters = 10001;
 char direction = 0;
 char incomingByte = 0;
 
@@ -70,7 +70,7 @@ void setup() {
    void loop(){
     WiFiEspClient client = server.available();
     handle(client);
-      if (iters < 6250) {
+      if (iters < 10000) {
         if (direction == '0') {
           digitalWrite(in1, HIGH); 
           digitalWrite(in2, LOW); 
